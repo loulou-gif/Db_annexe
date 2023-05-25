@@ -1,0 +1,119 @@
+{% load static %}
+<header>
+    {% include 'main/header.html' %}
+</header>
+<main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              <div class="d-flex justify-content-center py-4">
+                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                  <img src="{% static 'assets/img/logo.png'%}" alt="">
+                  <span class="d-none d-lg-block">DB ANNEXE</span>
+                </a>
+              </div><!-- End Logo -->
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Informations d'identification</h5>
+                    <p class="text-center small">Veiller remplire correctement chaque champs du formulaire</p>
+                  </div>
+                  
+                  {% comment %} <form method="POST" class="row g-3 needs-validation" novalidate> {% endcomment %}
+                    
+                    <form class="row g-3" class="row g-3 needs-validation"   method="POST">
+                      {% csrf_token %}
+                      <div class="col-md-6">
+                        <label for="inputName5" class="form-label">Nom</label>
+                        <input type="text" name="name" class="form-control" id="inputName5">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputName5" class="form-label">Prénoms</label>
+                        <input type="text" name="prenoms" class="form-control" id="inputName5">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputEmail5" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" id="inputEmail5">
+                      </div>
+                      <div class="col-md-6">
+                        <label for="inputNumber" class="form-label">Numéro</label>
+                        <input type="number" name="numero" class="form-control" id="inputNumber" placeholder="+225 0798395774">
+                      </div>
+                      <div class="col-md-12">
+                        <label for="inputDate" class="form-label">Date de naissance</label>
+                        <input type="date" name="date" class="form-control" id="inputDate">
+                      </div>
+                      <div class="col-12">
+                        <label for="inputAddress5" class="form-label">Ville de résidence</label>
+                        <input type="text" name="location" class="form-control" id="inputAddres5s" placeholder="EXP(Abidjan)">
+                      </div>
+                      <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Commune de résidence</label>
+                        <input type="text" name="commune" class="form-control" id="inputAddress2" placeholder="EXP(yopougon)">
+                      </div>
+                      <fieldset class="row mb-3 mt-3">
+                        <legend class="col-form-label col-sm-10 pt-0">Statut matrimonial</legend>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="status1" value="oui" checked>
+                                    <label class="form-check-label" name="oui" for="status1">
+                                        Oui
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="status2" value="non" checked>
+                                    <label class="form-check-label" name="non" for="status2">
+                                        Non
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset class="row mb-3">
+                          <legend class="col-form-label col-sm-10 pt-0">Genre</legend>
+                              <div class="col-sm-10">
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="genre" id="genre1" value="masculin" checked>
+                                      <label class="form-check-label" name="masculin" for="genre1">
+                                          Masculin
+                                      </label>
+                                  </div>
+                              </div>
+                              <div class="col-sm-10">
+                                  <div class="form-check">
+                                      <input class="form-check-input" type="radio" name="genre" id="genre2" value="feminin" checked>
+                                      <label class="form-check-label" name="feminin" for="genre2">
+                                          Feminin
+                                      </label>
+                                  </div>
+                              </div>
+                      </fieldset>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Suivant</button>
+                        {% comment %} <button type="reset" class="btn btn-secondary">Reset</button> {% endcomment %}
+                      </div>
+                      {% comment %} <a href="{% url 'form2' %}">accéder au formulaire 2</a> {% endcomment %}
+                    </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main><!-- End #main -->
+
+{% comment %} <footer>
+   {% include 'main/footer.html' %}
+</footer> {% endcomment %}

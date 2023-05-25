@@ -1,0 +1,50 @@
+{% load static %}
+<head>
+    <title>Ma page HTML</title>
+    <link rel="stylesheet" type="text/css" href="{%  static 'css/form.css' %}">
+  </head>
+<br/>
+
+<div class="content">
+    <div class="form">
+        <h1>REGISTRE</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="">
+                <div class="input">
+                        {{form.username}}
+                    </div>
+                    <div class="input">
+                        {{form.last_name}}
+                    </div>
+                    <div class="input">
+                        {{form.first_name}}
+                    </div>
+                    <div class="input">
+                        {{form.email}}
+                    </div>
+                    <div class="input">
+                        {{form.password1}}
+                    </div>
+                    <div class="input">
+                        {{form.password2}}
+                    </div>
+            </div>
+            {% comment %} {{ form.as_p }} {% endcomment %}
+        <div class="bouton">
+            <div class="btn">
+                <button class="btn btn-info" type="submit" >s'inscrire</button>
+                <p>Déjà un compte?<a href="{% url 'connexion' %}">Connectez-vous</a></p>
+            </div>
+            
+        </div>
+        
+        </from>
+        <div class="error">
+            {% comment %} {% for info in messages %}
+            <p style="color:red">{{ info }}</p>
+            {%endfor%} {% endcomment %}
+        </div>
+    </div>
+</div>
+{% comment %} {% include '../pages/footer.html' %} {% endcomment %}
