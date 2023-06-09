@@ -115,11 +115,11 @@ button{
 @media (min-width: 768px) {
     .content {
       flex: 0 0 50%;
-      max-width: 50%;
+      max-width: 100%;
     }
     input {
         flex: 0 0 50%;
-        max-width: 50%;
+        max-width: 100%;
       }
     select{
         flex: 0 0 50%;

@@ -1,7 +1,6 @@
 from django.urls import path
 from . import views
 
-# app_name= "comptes"
 
 urlpatterns = [
     path('connexion',views.connexion ,name="connexion"),
@@ -13,4 +12,5 @@ urlpatterns = [
     path('graph', views.graph, name="graph"),
     path('recherche', views.recherche, name="recherche"),
     path('resultats', views.resultats, name="resultats"),
+    path('change',views.change, name="change"),
 ]

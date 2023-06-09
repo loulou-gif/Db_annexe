@@ -28,22 +28,22 @@
                       <p class="text-center small">Entrer vos identifiants</p>
                       {% csrf_token %}
                       {% for info in messages %}
-                      <p style="color:blue">{{ info }}</p>
+                      <p id=" info"class='alert alert-danger text-center' >{{ info }}</p>
                       {%endfor%}
                     </div>
                     <form class="row g-3 needs-validation" novalidate method="POST">
                       {% csrf_token %}
                         <div class="col-md-12">
-                          <label for="inputName5"  class="form-label">Your Name</label>
+                          <label for="inputName5"  class="form-label">Nom d'utilisateur</label>
                           <input type="text" name="username" class="form-control" id="inputName5">
                         </div>
                        
                         <div class="col-md-12">
-                          <label for="inputPassword5" class="form-label">Password</label>
+                          <label for="inputPassword5" class="form-label">Mot de passe</label>
                           <input type="password" name="password" class="form-control" id="inputPassword5">
                         </div>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">Se connecter</button>
                         </div>
                         </form>
                     </form>

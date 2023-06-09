@@ -6,10 +6,12 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from django.db.models import Q
 from .forms import registreForm
+from django.contrib.auth.models import User
 from formulaires.models import Person, spirit, scolaire, professionnal
 # Create your views here.
 
 # formulaire de connexion
+
 def connexion(request):
     if request.user.is_authenticated:
         return redirect('index')
@@ -48,12 +50,7 @@ def registre(request):
 
 # vue de modification de parametre
 
-# class VotreModeleUpdateView(UpdateView):
-    
-    # model = VotreModele
-    # fields = ['champ1', 'champ2', ...]
-    # template_name_suffix = '_update_form'
-    # success_url = reverse_lazy('nom-de-la-page-de-success')
+
 
 # déconnexion d'un compte
 
@@ -91,16 +88,39 @@ def details(request, person_id):
     }
     return render(request, 'pages/details.html', context)
 
-# page profil
+# page profil et de modification de mail ou de nom
 
 def profil(request):
     if not request.user.is_authenticated:
         return redirect('connexion')
+    
+    # obj = get_object_or_404(User, pk=pk)
+    # if request.method == 'POST':
+    #     nom = request.POST.get("Nom")
+    #     prenoms = request.POST.get("Prenoms")
+    #     description = request.POST.get("Description")
+    #     email = request.POST.get("email")
+        
+    #     obj.last_name = nom
+    #     obj.first_name = prenoms
+    #     obj.email = email
+        
+    
     user = request.user
     context = {
-        'user': user
+        'user': user,
+        # 'obj': obj
     }
+    
+        
     return render(request, 'pages/profil.html', context)
+
+
+
+
+# change le mot de passe
+def change(request):
+    return render(request, 'pages/change.html')
 
 # page graph
 
