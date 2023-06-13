@@ -10,7 +10,5 @@ urlpatterns = [
     path('profil', views.profil, name="profil"),
     path('<int:person_id>/', views.details, name="details"),
     path('graph', views.graph, name="graph"),
-    path('recherche', views.recherche, name="recherche"),
-    path('resultats', views.resultats, name="resultats"),
-    path('change',views.change, name="change"),
+    # path('change',views.change, name="change"),
 ]

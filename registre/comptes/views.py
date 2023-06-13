@@ -117,10 +117,9 @@ def profil(request):
 
 
 
-
 # change le mot de passe
-def change(request):
-    return render(request, 'pages/change.html')
+# def change(request):
+#     return render(request, 'pages/change.html')
 
 # page graph
 
@@ -175,18 +174,3 @@ def recherche(request):
     return render(request, 'pages/index.html', context)
 
 
-def resultats(request):
-    if not request.user.is_authenticated:
-        return redirect('connexion')
-    query = request.GET.get('q')
-    if query:
-        context = {
-            'results' : Person.objects.filter(Q(name__icontains=query) | Q(prenoms__icontains=query)),
-            'resultats' : professionnal.objects.filter(Q(domaine__icontains=query | Q(metier__icontains=query)))
-        }
-    else:
-        context ={
-            'results' : [],
-            'resultats' : []
-        }
-    return render(request, 'pages/resultats.html', context)
