@@ -57,8 +57,6 @@ def registre(request):
 def deconnexion(request):
     if not request.user.is_authenticated:
         return redirect('connexion')
-    if not request.user.is_authenticated:
-        return redirect('connexion')
     logout(request)
     return redirect('connexion')
 
@@ -68,9 +66,7 @@ def deconnexion(request):
 def index(request):
     if not request.user.is_authenticated:
         return redirect('connexion')
-    if not request.user.is_authenticated:
-        return redirect('connexion')
-    membres = Person.objects.all()
+    membres = Person.objects.all().order_by('name')
     context={
         'membres': membres
     }
@@ -130,47 +126,117 @@ def graph(request):
     femmes = Person.objects.filter(genre="feminin")
     employer = professionnal.objects.filter(working="oui")
     chomeur = professionnal.objects.filter(working="non")
-    Nbremployer = employer.count()
-    Nbrechomeur = chomeur.count()
-    Nbrehommes = hommes.count()
-    Nbrefemmes = femmes.count()
-    total = Nbrehommes + Nbrefemmes
-    pour_employer = (Nbremployer / total )* 100
-    pour_chomeur = (Nbrechomeur / total )* 100 
-    pour_hommes = (Nbrehommes / total )* 100
-    pour_femmes = (Nbrefemmes / total )* 100
+    number_employer = employer.count()
+    number_chomeur = chomeur.count()
+    number_hommes = hommes.count()
+    number_femmes = femmes.count()
+    total = number_hommes + number_femmes
+    pour_employer = (number_employer / total )* 100
+    pour_chomeur = (number_chomeur / total )* 100 
+    pour_hommes = (number_hommes / total )* 100
+    pour_femmes = (number_femmes / total )* 100
     context={
         'hommes': hommes,
         'femmes': femmes,
-        'Nbrehommes': Nbrehommes,
-        'Nbrefemmes': Nbrefemmes,
+        'Nbrehommes': number_hommes,
+        'Nbrefemmes': number_femmes,
         'pour_hommes': pour_hommes,
         'pour_femmes': pour_femmes,
         'total': total,
         'pour_employer': pour_employer,
         'pour_chomeur': pour_chomeur,
-        'Nbremployer': Nbremployer,
-        'Nbrechomeur': Nbrechomeur,
+        'Nbremployer': number_employer,
+        'Nbrechomeur': number_chomeur,
         'employer' : employer,
         'chomeur' : chomeur
     }
     return render(request, 'pages/graph.html', context)
 
 
-def recherche(request):
-    if not request.user.is_authenticated:
-        return redirect('connexion')
-    query = request.GET.get('q')
-    if query:
-        context = {
-            'results' : Person.objects.filter(Q(name__icontains=query) | Q(prenoms__icontains=query)),
-            'resultats' : professionnal.objects.filter(Q(domaine__icontains=query | Q(metier__icontains=query)))
-        }
-    else:
-        context ={
-            'results' : [],
-            'resultats' : []
-        }
-    return render(request, 'pages/index.html', context)
+def stat2(request):
+    men = Person.objects.filter(genre="masculin")
+    women = Person.objects.filter(genre="feminin")
+    baptised = spirit.objects.filter(baptism_spirit="oui")
+    not_baptised = spirit.objects.filter(baptism_spirit="non")  
+    born_again = spirit.objects.filter(baptism_water="oui")
+    not_born_again = spirit.objects.filter(baptism_water="non")
+    number_baptised = baptised.count()
+    number_not_baptised = not_baptised.count()
+    number_born_again = born_again.count()
+    number_not_born_again = not_born_again.count()
+    number_men = men.count()
+    number_women = women.count()
+    total = number_men + number_women
+    pourcent_baptised = (number_baptised / total )* 100
+    pourcent_not_baptised = (number_not_baptised / total )* 100
+    pourcent_born_again = (number_born_again / total )* 100
+    pourcent_not_born_again = (number_not_born_again / total )* 100
+    context = {
+        'number_men': number_men,
+        'number_women': number_women,
+        'number_baptised': number_baptised,
+        'number_not_baptised': number_not_baptised,
+        'number_born_again': number_born_again,
+        'number_not_born_again': number_not_born_again,
+        'pourcent_baptised': pourcent_baptised,
+        'pourcent_not_baptised': pourcent_not_baptised,
+        'pourcent_born_again': pourcent_born_again,
+        'pourcent_not_born_again': pourcent_not_born_again,
+        'total': total
+    }
+    return render(request, 'pages/stat2.html', context)
 
+def stat3(request):
+    men = Person.objects.filter(genre="masculin")
+    women = Person.objects.filter(genre="feminin")
+    not_diplomed = scolaire.objects.filter(series="Aucun")
+    number_men = men.count()
+    number_women = women.count()
+    total = number_men + number_women
+    number_not_diplomed = not_diplomed.count()
+    number_diplomed = total - number_not_diplomed
+    pourcent_diplomed = (number_not_diplomed / total )* 100
+    pourcent_not_diplomed = (number_diplomed / total )* 100
+    context = {
+        'number_men': number_men,
+        'number_women': number_women,
+        'number_diplomed': number_diplomed,
+        'number_not_diplomed': number_not_diplomed,
+        'pourcent_diplomed': pourcent_diplomed,
+        'pourcent_not_diplomed': pourcent_not_diplomed,
+        'total': total
+    }
+    return render(request, 'pages/stat3.html', context)
 
+def stat4(request):
+    men = Person.objects.filter(genre="masculin")
+    women = Person.objects.filter(genre="feminin")
+    maried = Person.objects.filter(status="Marié")
+    fianced = Person.objects.filter(status="Fiancé")
+    widow = Person.objects.filter(status="Veuf")
+    celibataire = Person.objects.filter(status="Celibataire")
+    number_men = men.count()
+    number_women = women.count()
+    total = number_men + number_women
+    number_maried = maried.count()
+    number_celibataire = celibataire.count()
+    number_fianced = fianced.count()
+    number_widow = widow.count()
+    pourcent_maried = (number_maried / total )* 100
+    pourcent_celibataire = (number_celibataire / total )* 100
+    pourcent_fianced = (number_fianced / total )* 100
+    pourcent_widow = (number_widow / total )* 100
+    context = {
+        'number_men': number_men,
+        'number_women': number_women,
+        'number_maried': number_maried,
+        'number_celibataire': number_celibataire,
+        'number_fianced': number_fianced,
+        'number_widow': number_widow,
+        'pourcent_maried': pourcent_maried,
+        'pourcent_celibataire': pourcent_celibataire,
+        'pourcent_fianced': pourcent_fianced,
+        'pourcent_widow': pourcent_widow,
+        'total': total
+    }    
+    return render(request, 'pages/stat4.html', context)

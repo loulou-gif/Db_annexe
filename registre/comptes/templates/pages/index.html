@@ -25,7 +25,6 @@
                   <table class="table datatable table-striped">
                     <thead>
                             <tr>
-                              <th scope="col">ID</th>
                               <th scope="col">Nom</th>
                               <th scope="col">Prénoms</th>
                               <th scope="col">Numéro</th>
@@ -39,7 +38,7 @@
                             {% for membre in membres  %}
                             <tr>
                               
-                              <th scope="row">{{ membre.id }}</a></th>
+                              
                               <td>{{membre.name}} </td>
                               <td>{{membre.prenoms}}</td>
                               <td>{{membre.numero}}</td>

@@ -177,7 +177,7 @@
             <hr class="dropdown-divider">
           </li>
 
-          <li>
+          {% comment %} <li>
             <a class="dropdown-item d-flex align-items-center" href="{% url 'profil'%}">
               <i class="bi bi-person"></i>
               <span>Profil</span>
@@ -202,7 +202,7 @@
               <i class="bi bi-question-circle"></i>
               <span>Besoin d'aide?</span>
             </a>
-          </li>
+          </li> {% endcomment %}
           <li>
             <hr class="dropdown-divider">
           </li>
@@ -236,30 +236,40 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Tables</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-layout-text-window-reverse"></i><span>Statistiques</span><i class="bi bi-chevron-down ms-auto"></i>
       </a>
       <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
           <a href="{% url 'graph' %}">
-            <i class="bi bi-circle"></i><span>Statistiques</span>
+            <i class="bi bi-circle"></i><span>Stats Professionnelle</span>
           </a>
         </li>
         <li>
-          <a href="#">
-            <i class="bi bi-circle"></i><span>Data Tables</span>
+          <a href="{% url 'stat2' %}">
+            <i class="bi bi-circle"></i><span>Stats Spirituel</span>
           </a>
         </li>
+        <li>
+          <a href="{%url 'stat3'%}">
+            <i class="bi bi-circle"></i><span>Stats Educatif</span>
+          </a>
+        </li>
+        {% comment %} <li>
+          <a href="{% url 'stat4'%}">
+            <i class="bi bi-circle"></i><span>Stats Matrimonial</span>
+          </a>
+        </li> {% endcomment %}
       </ul>
     </li><!-- End Tables Nav -->
 
-    <li class="nav-heading">Pages</li>
+    {% comment %} <li class="nav-heading">Pages</li> {% endcomment %}
 
-    <li class="nav-item">
+    {% comment %} <li class="nav-item">
       <a class="nav-link collapsed" href="{% url 'profil' %}">
         <i class="bi bi-person"></i>
         <span>Profile</span>
       </a>
-    </li><!-- End Profile Page Nav -->
+    </li><!-- End Profile Page Nav --> {% endcomment %}
 
     {% comment %} <li class="nav-item">
       <a class="nav-link collapsed" href="pages-faq.html">

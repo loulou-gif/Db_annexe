@@ -1,3 +1,4 @@
+{% load static %}
 <header>
   {% include 'main/header.html' %}
 </header>
@@ -11,7 +12,7 @@
 
             <div class="d-flex justify-content-center py-4">
               <a href="index.html" class="logo d-flex align-items-center w-auto">
-                <img src="assets/img/logo.png" alt="">
+                <img src="{% static 'assets/img/logo.png'%}" alt="">
                 <span class="d-none d-lg-block">DB ANNEXE</span>
               </a>
             </div><!-- End Logo -->
@@ -30,7 +31,32 @@
                   <form class="row g-3" method="POST">
                     <div class="col-md-12">
                       <label for="inputText5" class="form-label">Dans quelle domaine êtes vous???</label>
-                      <input type="text" class="form-control" name="domaines" id="inputText5" placeholder="EXP(L'informatique)">
+                      <div class="col-md-12">
+                        <select id="inputState" name="domaines" class="form-select">
+                          <option selected>Autres Domaines</option>
+                          <option>Agriculture</option>
+                          <option>Télécommunications</option>
+                          <option>Pétrole et gaz</option>
+                          <option>Banque et finance</option>
+                          <option>Énergie</option>
+                          <option>Agriculture</option>
+                          <option>Tourisme</option>
+                          <option>Commerce</option>
+                          <option>Construction et immobilier</option>
+                          <option>Manufacturier</option>
+                          <option>Services</option>
+                          <option>Transport et logistique</option>
+                          <option>Technologie de l'information</option>
+                          <option>Éducation</option>
+                          <option>Santé</option>
+                          <option>Média et communication</option>
+                          <option>Mode et textile</option>
+                          <option>Art et culture</option>
+                          <option>Restauration</option>
+                          <option>Automobile</option>
+                          <option>Environnement</option>
+                        </select>
+                    </div>
                     </div>
                     <fieldset class="row-md-12">
                       <legend class="col-form-label col-sm-10 pt-0">êtes vous en fonction dans ce domaines?</legend>

@@ -25,13 +25,13 @@
 
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-body">
+            <div class="card-body" style="height: 404px;">
               <h5 class="card-title">Nombre d'hommes et de femmes dans l'église</h5>
 
               <!-- Pie Chart -->
               
 
-              <canvas id="pieChart" style="max-height: {{ pour_hommes }}%;"></canvas>
+              <canvas id="pieChart" style="max-height: {{ pour_hommes }}%;" height="646"width="1941"></canvas>
               <script>
                   document.addEventListener("DOMContentLoaded", () => {
                       new Chart(document.querySelector('#pieChart'), {
@@ -65,11 +65,11 @@
 
         <div class="col-lg-6">
           <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Nombres de personnes en emploie dans l'église</h5>
+            <div class="card-body" style="height: 404px;">
+              <h5 class="card-title">Nombres de jeunes en emploie dans l'église</h5>
 
               <!-- Pour les employées -->
-              <canvas id="doughnutChart" style="max-height: {{ pour_employer }}%;"></canvas>
+              <canvas id="doughnutChart" style="max-height: {{ pour_employer }}%;" height="646"width="1941"></canvas>
               <script>
                   document.addEventListener("DOMContentLoaded", () => {
                       new Chart(document.querySelector('#doughnutChart'), {
@@ -96,7 +96,7 @@
               </script>
 
               <!-- End Doughnut CHart -->
-              <p>Avec {{Nbremployer}} nombres de jeunes qui travail et {{Nbrechomeur}} nombres de jeunes sans emploie </p>
+              <p>Avec {{Nbremployer}} jeunes qui travail et {{Nbrechomeur}} jeunes sans emploie </p>
             </div>
             
           </div>
