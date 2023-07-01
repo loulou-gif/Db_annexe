@@ -1,54 +1,9 @@
 {% load static %}
 <head>
-    <title>Ma page HTML</title>
+    <title>Registre Annexe</title>
     <link rel="stylesheet" type="text/css" href="{%  static 'css/form.css' %}">
-  </head>
+</head>
 <br/>
-
-{% comment %} <div class="content">
-    <div class="form">
-        <h1>REGISTRE</h1>
-        <form method="POST">
-            {% csrf_token %}
-            <div class="">
-                <div class="input">
-                        {{form.username}}
-                    </div>
-                    <div class="input">
-                        {{form.last_name}}
-                    </div>
-                    <div class="input">
-                        {{form.first_name}}
-                    </div>
-                    <div class="input">
-                        {{form.email}}
-                    </div>
-                    <div class="input">
-                        {{form.password1}}
-                    </div>
-                    <div class="input">
-                        {{form.password2}}
-                    </div>
-            </div> {% endcomment %}
-            {% comment %} {{ form.as_p }} {% endcomment %}
-        {% comment %} <div class="bouton">
-            <div class="btn">
-                <button class="btn btn-info" type="submit" >s'inscrire</button>
-                <p>Déjà un compte?<a href="{% url 'connexion' %}">Connectez-vous</a></p>
-            </div>
-            
-        </div>
-        
-        </from>
-        <div class="error">
-            {% comment %} {% for info in messages %}
-            <p style="color:red">{{ info }}</p>
-            {%endfor%} 
-        </div>
-    </div>
-</div> {% endcomment %}
-{% comment %} {% include '../pages/footer.html' %} {% endcomment %}
-
 <br/>
 {% load static %}
 <body>
@@ -85,44 +40,44 @@
                     <form class="row g-3 needs-validation" novalidate method="POST">
                       {% csrf_token %}
                         <div class="col-md-12">
-                          <label for="inputName5"  class="form-label">Your Name</label>
+                          <label for="inputName5"  class="form-label">Nom d'utilisateur</label>
                             <div class="input">
                                 {{form.username}}
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <label for="inputName5"  class="form-label">Your Name</label>
+                            <label for="inputName5"  class="form-label">Nom</label>
                             <div class="input">
                              {{form.last_name}}
                             </div>
                         </div>
                         <div class="col-md-12">
-                          <label for="inputName5"  class="form-label">Your Name</label>
+                          <label for="inputName5"  class="form-label">Prenoms</label>
                             <div class="input">
                                 {{form.first_name}}
                             </div>
                         </div>
                         <div class="col-md-12">
-                          <label for="inputName5"  class="form-label">Your Name</label>
+                          <label for="inputName5"  class="form-label">Mail</label>
                             <div class="input">
                              {{form.email}}
                             </div>
                         </div>
                         <div class="col-md-12">
-                          <label for="inputName5"  class="form-label">Your Name</label>
+                          <label for="inputName5"  class="form-label">Mot de passe</label>
                             <div class="input">
                              {{form.password1}}
                             </div>
                         </div>
                        
                         <div class="col-md-12">
-                          <label for="inputPassword5" class="form-label">Password</label>
+                          <label for="inputPassword5" class="form-label">Confirmer votre mot de passe</label>
                           <div class="input">
                             {{form.password2}}
                           </div>
                         </div>
                         <div class="text-center">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-primary">S'enregistrer</button>
                         </div>
                         </form>
                     </form>
